@@ -1,5 +1,11 @@
 /* Page layout */
 
+
+.job-data{
+  height:300px;
+  width:100%;
+}
+
 #app {
   display: flex;
   flex-direction: row;

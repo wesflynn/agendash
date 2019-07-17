@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Agendash</title>
+    <title>AUTOMATE</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
@@ -15,13 +15,13 @@
     <div id="app">
       <div id="sidebar">
         <div class="sidebar-header">
-          <h1 class="page-title"></h1>
+          <h1 class="page-title">Test</h1>
           <div class="form-group">
-            <label for="overviewFilter">Filter by name</label>
+            <label for="overviewFilter">Filter By Name</label>
             <input type="text" class="overview-filter form-control">
           </div>
           <div class="form-group">
-            <label for="overviewFilter">Refresh interval (seconds)</label>
+            <label for="overviewFilter">Refresh Interval (seconds)</label>
             <input type="number" value="2" class="refresh-interval form-control">
           </div>
         </div>
@@ -35,9 +35,9 @@
               <small class="active-state"></small>
             </h2>
             <ul id="select-jobs" class="nav nav-pills">
-              <li role="presentation"><a role="button" data-action="schedule-job">Schedule job</a></li>
-              <li role="presentation"><a role="button" data-action="select-all">Select all</a></li>
-              <li role="presentation"><a role="button" data-action="select-none">Select none</a></li>
+              <li role="presentation"><a role="button" data-action="schedule-job">Schedule Job</a></li>
+              <li role="presentation"><a role="button" data-action="select-all">Select All</a></li>
+              <li role="presentation"><a role="button" data-action="select-none">Select None</a></li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -47,20 +47,27 @@
                 <tr>
                   <th>Status</th>
                   <th>Name</th>
-                  <th>Last run started</th>
-                  <th>Next run starts</th>
-                  <th>Last finished</th>
+                  <th>Tag</th>
+                  <th>User</th>
+                  <th>Last Run Started</th>
+                  <th>Next Run Starts</th>
+                  <th>Last Finished</th>
                   <th>Locked</th>
                 </tr>
               </thead>
-              <tbody id="job-list"></tbody>
+              <tbody id="job-list">
+                  <div id='search' class="form-group">
+                      <label for="Search">Search Jobs</label>
+                      <input type="text" class="search-filter form-control">
+                    </div>
+              </tbody>
             </table>
           </div>
         </div>
         <div id="details-pane">
-          <h2 class="sub-header"><span class="number-selected">0</span> <small>selected</small></h2>
-          <button type="button" class="btn btn-danger btn-xs" data-action="requeue-jobs">Requeue selected</button>
-          <button type="button" class="btn btn-danger btn-xs pull-right" data-action="delete-jobs">Delete selected</button>
+          <h2 class="sub-header"><span class="number-selected">0</span> <small>Selected</small></h2>
+          <button type="button" class="btn btn-danger btn-xs" data-action="requeue-jobs">Requeue Selected</button>
+          <button type="button" class="btn btn-danger btn-xs pull-right" data-action="delete-jobs">Delete Selected</button>
           <hr />
           <div id="details-list"></div>
         </div>
@@ -68,19 +75,27 @@
           <h2 class="sub-header">Create Job</h2>
           <hr />
           <div class="form-group">
-            <label>Job name</label>
+            <label>Job Name</label>
             <input type="text" class="job-name form-control">
+          </div>
+          <div class="form-group">
+            <label>Tag</label>
+            <input type="text" class="tag form-control">
+          </div>
+          <div class="form-group">
+            <label>User</label>
+            <input type="text" class="user-name form-control">
           </div>
           <div class="form-group">
             <label>Schedule</label>
             <input type="text" class="job-schedule form-control">
           </div>
           <div class="form-group">
-            <label>Repeat every</label>
+            <label>Repeat Every</label>
             <input type="text" class="job-repeat-every form-control">
           </div>
           <div class="form-group">
-            <label>Job data (json)</label>
+            <label>Job Data (JSON)</label>
             <textarea class="job-data form-control">{}</textarea>
           </div>
           <div class="form-group">
@@ -128,6 +143,12 @@
       </td>
       <td>
         <%- job.name %>
+      </td>
+      <td>
+        <%- job.user %>
+      </td>
+      <td>
+        <%- job.tag %>
       </td>
       <td><% if (job.lastRunAt) { %><time datetime="<%- moment(job.lastRunAt).toISOString() %>"><%- moment(job.lastRunAt).fromNow() %></time><% } %></td>
       <td><% if (job.nextRunAt) { %><time datetime="<%- moment(job.nextRunAt).toISOString() %>"><%- moment(job.nextRunAt).fromNow() %></time><% } %></td>
