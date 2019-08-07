@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>AUTOMATE</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
   </head>
 
   <body>
     <div id="app">
       <div id="sidebar">
         <div class="sidebar-header">
-          <h1 class="page-title">Test</h1>
+          <h1 class="page-title"></h1>
           <div class="form-group">
             <label for="overviewFilter">Filter By Name</label>
-            <input type="text" class="overview-filter form-control">
+            <input type="text" class="overview-filter form-control" />
           </div>
           <div class="form-group">
             <label for="overviewFilter">Refresh Interval (seconds)</label>
-            <input type="number" value="2" class="refresh-interval form-control">
+            <input
+              type="number"
+              value="2"
+              class="refresh-interval form-control"
+            />
           </div>
         </div>
         <div id="job-overview-list"></div>
@@ -35,9 +39,15 @@
               <small class="active-state"></small>
             </h2>
             <ul id="select-jobs" class="nav nav-pills">
-              <li role="presentation"><a role="button" data-action="schedule-job">Schedule Job</a></li>
-              <li role="presentation"><a role="button" data-action="select-all">Select All</a></li>
-              <li role="presentation"><a role="button" data-action="select-none">Select None</a></li>
+              <li role="presentation">
+                <a role="button" data-action="schedule-job">Schedule Job</a>
+              </li>
+              <li role="presentation">
+                <a role="button" data-action="select-all">Select All</a>
+              </li>
+              <li role="presentation">
+                <a role="button" data-action="select-none">Select None</a>
+              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -56,18 +66,32 @@
                 </tr>
               </thead>
               <tbody id="job-list">
-                  <div id='search' class="form-group">
-                      <label for="Search">Search Jobs</label>
-                      <input type="text" class="search-filter form-control">
-                    </div>
+                <div id="search" class="form-group">
+                  <label for="Search">Search Jobs</label>
+                  <input type="text" class="search-filter form-control" />
+                </div>
               </tbody>
             </table>
           </div>
         </div>
         <div id="details-pane">
-          <h2 class="sub-header"><span class="number-selected">0</span> <small>Selected</small></h2>
-          <button type="button" class="btn btn-danger btn-xs" data-action="requeue-jobs">Requeue Selected</button>
-          <button type="button" class="btn btn-danger btn-xs pull-right" data-action="delete-jobs">Delete Selected</button>
+          <h2 class="sub-header">
+            <span class="number-selected">0</span> <small>Selected</small>
+          </h2>
+          <button
+            type="button"
+            class="btn btn-danger btn-xs"
+            data-action="requeue-jobs"
+          >
+            Requeue Selected
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger btn-xs pull-right"
+            data-action="delete-jobs"
+          >
+            Delete Selected
+          </button>
           <hr />
           <div id="details-list"></div>
         </div>
@@ -76,31 +100,35 @@
           <hr />
           <div class="form-group">
             <label>Job Name</label>
-            <input type="text" class="job-name form-control">
+            <input type="text" class="job-name form-control" />
           </div>
           <div class="form-group">
             <label>Tag</label>
-            <input type="text" class="tag form-control">
+            <input type="text" class="tag form-control" />
           </div>
           <div class="form-group">
             <label>User</label>
-            <input type="text" class="user-name form-control">
+            <input type="text" class="user-name form-control" />
           </div>
           <div class="form-group">
             <label>Schedule</label>
-            <input type="text" class="job-schedule form-control">
+            <input type="text" class="job-schedule form-control" />
           </div>
           <div class="form-group">
             <label>Repeat Every</label>
-            <input type="text" class="job-repeat-every form-control">
+            <input type="text" class="job-repeat-every form-control" />
           </div>
           <div class="form-group">
             <label>Job Data (JSON)</label>
             <textarea class="job-data form-control">{}</textarea>
           </div>
           <div class="form-group">
-            <span class="btn btn-default btn-success" data-action="save">Save</span>
-            <span class="btn btn-default btn-warning" data-action="cancel">Cancel</span>
+            <span class="btn btn-default btn-success" data-action="save"
+              >Save</span
+            >
+            <span class="btn btn-default btn-warning" data-action="cancel"
+              >Cancel</span
+            >
           </div>
         </div>
       </div>
@@ -145,10 +173,10 @@
         <%- job.name %>
       </td>
       <td>
-        <%- job.user %>
+          <%- job.tag %>
       </td>
       <td>
-        <%- job.tag %>
+          <%- job.user %>
       </td>
       <td><% if (job.lastRunAt) { %><time datetime="<%- moment(job.lastRunAt).toISOString() %>"><%- moment(job.lastRunAt).fromNow() %></time><% } %></td>
       <td><% if (job.nextRunAt) { %><time datetime="<%- moment(job.nextRunAt).toISOString() %>"><%- moment(job.nextRunAt).fromNow() %></time><% } %></td>
@@ -195,6 +223,5 @@
     <script src="js/backbone-min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/main.js"></script>
-
   </body>
 </html>

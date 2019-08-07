@@ -1,9 +1,9 @@
 /* Page layout */
 
 
-.job-data{
-  height:300px;
-  width:100%;
+.job-data {
+  height:300px !important;
+  width:100% !important;
 }
 
 #app {
